@@ -16,6 +16,6 @@ test('bin', function (t) {
   ps.on('exit', function (code) {
     t.equal(code, 0);
     t.equal(stderr, '');
-    t.equal(stdout, 'argv: { _: [] }\nlib: module exports\n');
+    t.equal(stdout, 'argv: { _: [] }\n');
   });
 });
