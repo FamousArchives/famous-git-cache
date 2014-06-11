@@ -1,5 +1,5 @@
 {
-  "name": "famous-node-module",
+  "name": "fetch-famous",
   "version": "0.0.0",
   "description": "Module to fetch the famous framework as a POJOg",
   "main": "./lib/index.js",

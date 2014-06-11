@@ -3,8 +3,6 @@ var test = require('tape');
 
 var fetchFamous = require('../lib');
 
-
-
 test('returns function', function (t) {
   t.plan(1);
   t.equal(typeof fetchFamous, 'function', 'Module returns function');
@@ -23,7 +21,6 @@ test('invalid semver', function (t) {
 
 test('valid semver', function (t) {
   var currentFamousModules = require('./famous-modules.json');
-
   t.plan(2 + currentFamousModules.length);
 
   fetchFamous('0.2.1', function(err, famous) {
