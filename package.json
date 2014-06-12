@@ -24,8 +24,8 @@
     "commondir": "0.0.1",
     "findit": "^1.2.0",
     "minimist": "^0.1.0",
+    "mkdirp": "^0.5.0",
     "rimraf": "^2.2.8",
-    "semver": "^2.3.0",
     "which": "^1.0.5",
     "xtend": "^3.0.0"
   },

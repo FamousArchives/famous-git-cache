@@ -10,12 +10,21 @@ Usage
 -----
 
 ```
-var fetchFamous = require('fetch-famous');
+var fetchFamous = require('fetch-famous').fetchFamous;
 
 fetchFamous('0.2.1', function(err, famous) {
-    if (err) { return console.log(err); }
+  if (err) { return console.log(err); }
+  /* do something with famous */
+});
+```
 
-    /* do something with famous */
-
+```
+var clone = require('fetch-famous').clone;
+clone({
+  repo: 'git@github.com:Famous/core.git',
+  ref: 'master'
+}, function(err, corePath) {
+  if (err) { return console.log(err); }
+  /* do something with corePath */
 });
 ```
