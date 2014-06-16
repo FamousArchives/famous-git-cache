@@ -2,7 +2,6 @@
 var test = require('tape');
 
 var lib = require('../lib');
-var fetchFamous = lib.fetchFamous;
 var clone = lib.clone;
 var cleanMirror = lib.cleanMirror;
 var getRefs = lib.getRefs;
@@ -12,44 +11,28 @@ var getPullRequests = lib.getPullRequests;
 
 test('invalid ref', function (t) {
   t.plan(3);
-  fetchFamous(undefined, function(err, famous) {
+  var opts = {
+    repo: 'git@github.com:Famous/famous.git',
+    ref: undefined
+  };
+
+  clone(opts, function(err, clonePath) {
 
     t.ok(err instanceof Error, 'Error returned.');
     t.equal(err.message, 'Missing or invalid git reference', 'Correct error message for invalid semver.');
-    t.equal(famous, undefined, 'return value of `famous` is undefined.');
+    t.equal(clonePath, undefined, 'return value of `famous` is undefined.');
 
   });
 });
-
-function makeCheckoutTest(ref) {
-  return function (t) {
-    var currentFamousModules = require('./famous-modules-' + ref + '.json');
-    t.plan(2 + currentFamousModules.length);
-
-    fetchFamous(ref, function(err, famous) {
-
-      t.error(err, 'No error returned.');
-      t.equal(typeof famous, 'object', 'fetchFamous returned object');
-
-      currentFamousModules.forEach(function(key) {
-        t.equal(typeof famous[key], 'string', key + ' exists.');
-      });
-
-    });
-  };
-}
-
-test('valid semver', makeCheckoutTest('0.2.1'));
-test('valid sha1 hash', makeCheckoutTest('6b2ad41b3c024a298d778e6344383d846ae7fa98'));
 
 test('clone other repo', function (t) {
   t.plan(2);
   clone({
     repo: 'git@github.com:Famous/core.git',
     ref: 'master'
-  }, function(err, corePath) {
+  }, function(err, clonePath) {
     t.equal(err, undefined, 'No error returned.');
-    t.equal(typeof corePath, 'string');
+    t.equal(typeof clonePath, 'string');
   });
 });
 
