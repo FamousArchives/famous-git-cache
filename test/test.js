@@ -10,12 +10,7 @@ var getTags = lib.getTags;
 var getBranches = lib.getBranches;
 var getPullRequests = lib.getPullRequests;
 
-test('returns function', function (t) {
-  t.plan(1);
-  t.equal(typeof fetchFamous, 'function', 'Module returns function');
-});
-
-test('invalid semver', function (t) {
+test('invalid ref', function (t) {
   t.plan(3);
   fetchFamous(undefined, function(err, famous) {
 
@@ -102,58 +97,23 @@ test('perf: clone same repo twice, same branch', function(t) {
 //   t.ok(true);
 // });
 
-test('getRefs', function(t) {
-  var refsFixture = require('./famous-famous-refs.json');
-  t.plan(2 + Object.keys(refsFixture).length);
-  getRefs({
-    repo: 'git@github.com:Famous/famous.git'
-  }, function(err, refs) {
-    t.error(err, 'No error returned.');
-    t.equal(typeof refs, 'object', 'refs is object');
-    Object.keys(refsFixture).forEach(function(key) {
-      t.equal(refs[key], refsFixture[key], 'Hash for ref ' + key + ' matches.');
+function makeRefGetterTester (getterFn, fixtureType) {
+  return function(t) {
+    var fixture = require('./famous-famous-' + fixtureType + '.json');
+    t.plan(2 + Object.keys(fixture).length);
+    getterFn({
+      repo: 'git@github.com:Famous/famous.git'
+    }, function(err, refs) {
+      t.error(err, 'No error returned.');
+      t.equal(typeof refs, 'object', 'refs is object');
+      Object.keys(fixture).forEach(function(key) {
+        t.equal(refs[key], fixture[key], ['Hash for', fixtureType, key, 'matches.'].join(' '));
+      });
     });
-  });
-});
+  };
+}
 
-test('getTags', function(t) {
-  var tagsFixture = require('./famous-famous-tags.json');
-  t.plan(2 + Object.keys(tagsFixture).length);
-  getTags({
-    repo: 'git@github.com:Famous/famous.git'
-  }, function(err, refs) {
-    t.error(err, 'No error returned.');
-    t.equal(typeof refs, 'object', 'refs is object');
-    Object.keys(tagsFixture).forEach(function(key) {
-      t.equal(refs[key], tagsFixture[key], 'Hash for tag ' + key + ' matches.');
-    });
-  });
-});
-
-test('getBranches', function(t) {
-  var branchesFixture = require('./famous-famous-branches.json');
-  t.plan(2 + Object.keys(branchesFixture).length);
-  getBranches({
-    repo: 'git@github.com:Famous/famous.git'
-  }, function(err, refs) {
-    t.error(err, 'No error returned.');
-    t.equal(typeof refs, 'object', 'refs is object');
-    Object.keys(branchesFixture).forEach(function(key) {
-      t.equal(refs[key], branchesFixture[key], 'Hash for branch ' + key + ' matches.');
-    });
-  });
-});
-
-test('getPullRequests', function(t) {
-  var pullRequestsFixture = require('./famous-famous-pull-requests.json');
-  t.plan(2 + Object.keys(pullRequestsFixture).length);
-  getPullRequests({
-    repo: 'git@github.com:Famous/famous.git'
-  }, function(err, refs) {
-    t.error(err, 'No error returned.');
-    t.equal(typeof refs, 'object', 'refs is object');
-    Object.keys(pullRequestsFixture).forEach(function(key) {
-      t.equal(refs[key], pullRequestsFixture[key], 'Hash for pull request ' + key + ' matches.');
-    });
-  });
-});
+test('getRefs', makeRefGetterTester(getRefs, 'refs'));
+test('getTags', makeRefGetterTester(getTags, 'tags'));
+test('getBranches', makeRefGetterTester(getBranches, 'branches'));
+test('getPullRequests', makeRefGetterTester(getPullRequests, 'pull-requests'));
