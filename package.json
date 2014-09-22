@@ -27,12 +27,7 @@
     "which": "^1.0.5",
     "xtend": "^3.0.0"
   },
-  "bin": {
-    "fetch-famous": "bin/cmd.js"
-  },
-  "preferGlobal": "true",
   "directories": {
-    "bin": "./bin",
     "lib": "./lib",
     "test": "./test"
   },
