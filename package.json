@@ -36,5 +36,5 @@
     "node": ">=0.10.28",
     "npm": ">=1.4.10"
   },
-  "license": "TBD"
+  "license": "MPLv2"
 }
