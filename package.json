@@ -1,6 +1,6 @@
 {
   "name": "famous-git-cache",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Module for git cloning repos to a cache folder on disk and managing that cache",
   "main": "./lib/index.js",
   "repository": {
