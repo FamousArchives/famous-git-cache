@@ -1,4 +1,4 @@
-fetch-famous
+famous-git-cache
 ============
 
 This module is used to fetch the famo.us framework, checkout a specific version
@@ -10,7 +10,7 @@ Usage
 -----
 
 ```
-var fetchFamous = require('fetch-famous').fetchFamous;
+var fetchFamous = require('famous-git-cache').fetchFamous;
 
 fetchFamous('0.2.1', function(err, famous) {
   if (err) { return console.log(err); }
@@ -19,7 +19,7 @@ fetchFamous('0.2.1', function(err, famous) {
 ```
 
 ```
-var clone = require('fetch-famous').clone;
+var clone = require('famous-git-cache').clone;
 clone({
   repo: 'git@github.com:Famous/core.git',
   ref: 'master'
