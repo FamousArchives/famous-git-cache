@@ -71,7 +71,7 @@ test('perf: clone same repo twice, same branch', function(t) {
         var secondClone = endTwo - startTwo;
         // t.equal(typeof (firstClone), 'number');
         // t.equal(typeof (secondClone), 'number');
-        t.ok(firstClone > (secondClone * 10), 'The second clone was at least 10x faster than the first');
+        t.ok(firstClone > (secondClone * 5), 'The second clone was at least 5x faster than the first');
         // console.log('== 1 ==========', firstClone);
         // console.log('== 2 ==========', secondClone);
       });
