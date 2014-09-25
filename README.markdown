@@ -1,6 +1,8 @@
 famous-git-cache
 ============
 
+[![Build Status](https://travis-ci.org/Famous/famous-git-cache.svg?branch=master)](https://travis-ci.org/Famous/famous-git-cache) [![Dependency Status](https://david-dm.org/Famous/famous-git-cache.svg)](https://david-dm.org/Famous/famous-git-cache) [![devDependency Status](https://david-dm.org/Famous/famous-git-cache/dev-status.svg)](https://david-dm.org/Famous/famous-git-cache#info=devDependencies)
+
 This module is used to fetch the famo.us framework, checkout a specific version
 and then return a plain old JavaScript key-value object hash where the key is 
 the relative path (e.g. `core/Engine`) and the value is the raw content 
