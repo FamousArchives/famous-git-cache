@@ -16,7 +16,7 @@ var getPullRequests = lib.getPullRequests;
 test('invalid ref', function (t) {
   t.plan(3);
   var opts = {
-    repo: 'git@github.com:Famous/famous.git',
+    repo: 'https://github.com/Famous/famous.git',
     ref: undefined
   };
 
@@ -32,7 +32,7 @@ test('invalid ref', function (t) {
 test('clone other repo', function (t) {
   t.plan(2);
   clone({
-    repo: 'git@github.com:Famous/core.git',
+    repo: 'https://github.com/Famous/browserify-seed.git',
     ref: 'master'
   }, function(err, clonePath) {
     t.equal(err, undefined, 'No error returned.');
@@ -46,7 +46,7 @@ test('perf: clone same repo twice, same branch', function(t) {
   t.plan(6);
 
   var opts = {
-    repo: 'git@github.com:Famous/famous.git',
+    repo: 'https://github.com/Famous/famous.git',
     ref: ref
   };
 
@@ -89,7 +89,7 @@ function makeRefGetterTester (getterFn, fixtureType) {
     var fixture = require('./famous-famous-' + fixtureType + '.json');
     t.plan(2 + Object.keys(fixture).length);
     getterFn({
-      repo: 'git@github.com:Famous/famous.git'
+      repo: 'https://github.com/Famous/famous.git'
     }, function(err, refs) {
       t.error(err, 'No error returned.');
       t.equal(typeof refs, 'object', 'refs is object');
