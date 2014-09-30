@@ -5,7 +5,7 @@
   "main": "./lib/index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/famous/famous-git-cache.git"
+    "url": "git://github.com/FamousTools/famous-git-cache.git"
   },
   "scripts": {
     "test": "npm run-script lint; ./node_modules/.bin/tap test/*.js",
