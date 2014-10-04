@@ -1,7 +1,7 @@
 famous-git-cache
 ============
 
-[![Build Status](https://travis-ci.org/Famous/famous-git-cache.svg?branch=master)](https://travis-ci.org/Famous/famous-git-cache) [![Dependency Status](https://david-dm.org/Famous/famous-git-cache.svg)](https://david-dm.org/Famous/famous-git-cache) [![devDependency Status](https://david-dm.org/Famous/famous-git-cache/dev-status.svg)](https://david-dm.org/Famous/famous-git-cache#info=devDependencies)
+[![Build Status](https://travis-ci.org/FamousTools/famous-git-cache.svg?branch=master)](https://travis-ci.org/FamousTools/famous-git-cache) [![Dependency Status](https://david-dm.org/FamousTools/famous-git-cache.svg)](https://david-dm.org/FamousTools/famous-git-cache) [![devDependency Status](https://david-dm.org/FamousTools/famous-git-cache/dev-status.svg)](https://david-dm.org/FamousTools/famous-git-cache#info=devDependencies)
 
 This module is used to fetch the a git repo, checkout a specific version
 and then return a plain old JavaScript key-value object hash where the key is 
